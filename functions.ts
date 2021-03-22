@@ -1,6 +1,6 @@
 //Function
 //Particular business logic called as Function
-//Functions are used to reuse the business logic
+//Functions are used to reuse the "business" logic
 //we have following types of functions
 //1) Named Functions
 //2) Anonymous Functions / Arrow Functions / Fat Arrow Functions / Lamda Functions / CallBack Functions / NameLess Functions
@@ -177,6 +177,7 @@
 */
 
 
+/*
 function fun_one(arg1:any,
                  arg2?:any,
                  ...arg3:any):void{
@@ -187,6 +188,164 @@ fun_one("Hello_1");                 //Hello_1 undefined []
 fun_one(undefined);                 //undefined undefined []
 fun_one(undefined,undefined,undefined); //undefined undefined [ undefined ]
 fun_one(null,null,null);            //null null [ null ]
+*/
+
+
+
+
+
+
+/*
+    function fun_one(arg1?:any,
+                    arg2?:any,
+                    arg3?:any):void{
+        console.log( arg1, arg2, arg3 );
+    };
+    fun_one();              //undefined undefined undefined
+    fun_one("Hello_1");     //Hello_1 undefined undefined
+    fun_one("Hello_1","Hello_2","Hello_3");         //Hello_1 Hello_2 Hello_3
+    fun_one(undefined,"Hello_1");       //undefined Hello_1 undefined
+    fun_one(null,null,null);        //null null null
+*/
+
+
+
+//Default Parameters in Functions
+//while defining the functions, we will assign default values
+//this concept also introduced in ES6
+//Note : undefined ==> original value never be effected
+//Note : null ==> null means original value will be deleted
+
+/*
+    function fun_one(arg1:string = "Hello_1",
+                    arg2:string = "Hello_2",
+                    arg3:string = "Hello_3"):void{
+        console.log( arg1, arg2, arg3 );
+    };
+
+    fun_one();                                  //Hello_1 Hello_2 Hello_3
+    fun_one("Angular12");                       //Angular12 Hello_2 Hello_3
+    fun_one("ReactJS","Deno","MongoDB");        //ReactJS Deno MongoDB
+    fun_one(undefined,undefined,undefined);     //Hello_1 Hello_2 Hello_3 
+    fun_one(null,null,null);                    //null null null
+*/
+
+
+
+/*
+    function fun_one(arg1:string = "Hello_1",
+                    arg2:string):void{
+        console.log( arg1, arg2 );
+    };
+    fun_one(undefined,"Hello_2");           //Hello_1 Hello_2
+    fun_one(null,"Hello_2");                //null Hello_2
+    fun_one("ReactJS","NodeJS");            //ReactJS NodeJS
+    fun_one(undefined,undefined);           //Hello_1 undefined
+    fun_one(null,null);                     //null null
+*/
+
+
+/*
+    function fun_one(arg1:string, arg2:string, arg3?:string,arg4?:string):void{
+        console.log( arg1, arg2, arg3, arg4 );
+    };
+    fun_one("Hello_1","Hello_2");           //Hello_1 Hello_2 undefined undefined
+    fun_one(undefined,undefined);           //undefined undefined undefined undefined
+    fun_one(null,null,null,null);           //null null null null
+*/
+
+
+
+function fun_one(arg1:string,
+                 arg2:string="Hello_2",
+                 arg3?:string,
+                 ...arg4:string[]):void{
+    console.log( arg1, arg2, arg3, arg4 );
+};
+
+fun_one("Hello_1");         //Hello_1 Hello_2 undefined []
+
+fun_one("Hello_1",undefined,"Hello_3","Hello_4");       //Hello_1 Hello_2 Hello_3 [ 'Hello_4' ]
+
+fun_one(undefined,undefined,undefined,undefined);       //undefined Hello_2 undefined [ undefined ]
+
+fun_one( null, null, null, null );      //null null null [ null ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
