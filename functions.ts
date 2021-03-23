@@ -255,21 +255,100 @@ fun_one(null,null,null);            //null null [ null ]
 */
 
 
+/*
+    function fun_one(arg1:string,
+                    arg2:string="Hello_2",
+                    arg3?:string,
+                    ...arg4:string[]):void{
+        console.log( arg1, arg2, arg3, arg4 );
+    };
 
-function fun_one(arg1:string,
-                 arg2:string="Hello_2",
-                 arg3?:string,
-                 ...arg4:string[]):void{
-    console.log( arg1, arg2, arg3, arg4 );
+    fun_one("Hello_1");         //Hello_1 Hello_2 undefined []
+
+    fun_one("Hello_1",undefined,"Hello_3","Hello_4");       //Hello_1 Hello_2 Hello_3 [ 'Hello_4' ]
+
+    fun_one(undefined,undefined,undefined,undefined);       //undefined Hello_2 undefined [ undefined ]
+
+    fun_one( null, null, null, null );      //null null null [ null ]
+*/
+
+
+//IIFE
+//Immidiate Invokable Functional Expression
+//ES9
+//when ever we create the function, automatically it will invoke
+//these functions also called as self invokable functions
+/*
+    Syntax
+    ======
+    ((arg1,arg2,arg3,.....argn)=>{
+        //business logic
+    })(param1,param2,param3,.....paramn)
+*/
+
+
+
+/*
+    (()=>{
+        console.log("Welcome to IIFE");
+    })();     //Welcome to IIFE
+*/
+
+
+/*
+    console.log(
+        ((arg1:any,arg2:any,arg3:any)=>{
+            return `MERN Stack....${arg1}<==>${arg2}<==>${arg3}`;
+        })("ReactJS","NodeJS","MongoDB")
+    );   //MERN Stack....ReactJS<==>NodeJS<==>MongoDB
+*/
+
+/*
+    let res = (()=>{
+        return "Hello";
+    })();
+    console.log( res );   //Hello
+*/
+
+
+
+
+/*
+    function my_fun(arg1:any,arg2:any,arg3:any):void{
+        console.log( arg1, arg2, arg3 );
+    };
+
+    my_fun(
+        (()=>{
+            return "ReactJS";
+        })(),
+        (()=>{
+            return "NodeJS";
+        })(),
+        (()=>{
+            return "MongoDB"
+        })()
+    );
+*/
+
+
+//Generators
+//Generators are used to control the flow of execution in function call
+//we will prefix Generator Functions with "*"
+//inside the Generator functions, each statement will prefix with "yield" keyword
+
+function *fun_one(){
+    yield "Hello_1";
+    yield "Hello_2";
+    yield "Hello_3";
+    yield "Hello_4";
+    yield "Hello_5";
 };
 
-fun_one("Hello_1");         //Hello_1 Hello_2 undefined []
 
-fun_one("Hello_1",undefined,"Hello_3","Hello_4");       //Hello_1 Hello_2 Hello_3 [ 'Hello_4' ]
 
-fun_one(undefined,undefined,undefined,undefined);       //undefined Hello_2 undefined [ undefined ]
 
-fun_one( null, null, null, null );      //null null null [ null ]
+
 
 
 

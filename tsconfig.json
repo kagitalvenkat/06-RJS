@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+         "sourceMap": false,
+         "noImplicitAny": false,
+         "module": "amd",
+         "target": "es5",
+         "jsx": "react",
+         "traceResolution":true,
+         "declaration": true,
+         "noEmitOnError":true,
+        "downlevelIteration": true,
+        "lib": ["esnext"]
+     },
+     "include": [
+         "./01core/**/*","./index.tsx"
+     ],
+     "exclude": [
+         "node_modules"
+     ]
+ }
