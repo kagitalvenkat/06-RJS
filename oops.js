@@ -9,21 +9,6 @@
 //the recomended modifier for "variables" is "private"
 //the recomended modifier for "functions" is "public"
 //"this" is the keyword, used to refer the current class members
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 /*
     class class_one{
         private sub_one:string;
@@ -125,58 +110,196 @@ var __extends = (this && this.__extends) || (function () {
 
     //Note : multiple inheritance not supported by TypeScript
 */
-var Parent = /** @class */ (function () {
-    function Parent() {
-        this.var_one = "Hello_1";
+/*
+    class Parent{
+        var_one:string = "Hello_1";
+    };
+
+    class Child1 extends Parent{
+        var_two:string = "Hello_2";
+    };
+
+    class Child2 extends Parent{
+        var_two:string = "Hello_3";
+    };
+
+    class Child3 extends Parent{
+        var_two:string = "Hello_4";
+    };
+
+    class Child4 extends Parent{
+        var_two:string = "Hello_5";
+    };
+
+    let obj1:Child1 = new Child1();
+    console.log( obj1.var_one, obj1.var_two );
+
+
+    let obj2:Child2 = new Child2();
+    console.log( obj2.var_one, obj2.var_two );
+
+
+    let obj3:Child3 = new Child3();
+    console.log( obj3.var_one, obj3.var_two );
+
+
+    let obj4:Child4 = new Child4();
+    console.log( obj4.var_one, obj4.var_two );
+*/
+/*
+    class Parent{}
+
+    class Child1 extends Parent{}
+
+    class Child2 extends Parent{}
+
+    class Subchild extends Child1,Child2{}
+
+    //Note : hybrid inheritance not supported by typescript
+*/
+//polymorphism
+//behaves like many called as polymorphism
+//1) function overriding     (dynamic polymorphism)
+//2) function overloading    (static polymorphism)
+/*
+    //function overriding
+    //overriding the parent class functionality with child class functionality called as function overriding
+
+    class class_one{
+        dbFun():string{
+            return "oracle data soon...!";
+        };
+    };
+
+    class class_two extends class_one{
+        dbFun():string{
+            return "mongodb data soon...!";
+        }
+    };
+
+    let obj:class_two = new class_two();
+    console.log( obj.dbFun() );   //mongodb data soon...!
+
+    //Note : we can implement function overriding with the help of inheritance
+*/
+/*
+    //function overloading
+    //more than one function with same name, and same number of arguments but datatype is different
+    //we can implement function overloading without inheritance
+
+    class class_one{
+        display(arg1:string,arg2:string):any;
+        display(arg1:number,arg2:number):any;
+        display(arg1:string,arg2:number):any;
+
+        display(arg1:any,arg2:any):any{
+            console.log( arg1, arg2 );
+        }
+    };
+
+    let obj1:class_one = new class_one();
+    obj1.display("Hello_1","Hello_2");
+    obj1.display(100,200);
+    obj1.display("Hello_1",200);
+*/
+/*
+    //modifiers
+    1) public
+    2) private
+    3) protected
+
+    
+*/
+/*
+        public
+        ======
+        1) public members we can access "anywhere" in application.
+
+        2) public members by default available to "child" classes.
+
+        3) we can access public members, by using class "objects".
+
+        4) public modifier applicable to "variables", "functions", and "constructor"
+
+        5) public modifier won't applicable to "classes"
+
+*/
+/*
+    class class_one{
+        public var_one:string;
+        public constructor(){
+            this.var_one = "hello_1";
+        }
+        public fun_one():string{
+            return this.var_one;
+        };
+    };
+
+    class class_two extends class_one{};
+
+    let obj:class_two = new class_two();
+    console.log( obj.var_one, obj.fun_one() );
+*/
+/*
+    public class class_one{};
+    //'public' modifier cannot appear on a module or namespace element.
+*/
+/*
+    private modifier
+    ================
+
+        1) private members "won't" accessable to "child" classes.
+
+        2) private members, we can't access by using class "objects".
+
+        3) private modifier applicable to "variables", "functions" and "constructor".
+
+        4) private modifier not applicable to "classes".
+
+        5) we can create object to the private "constructor" classes.
+*/
+/*
+    private class class_one{};
+    //'private' modifier cannot appear on a module or namespace element.
+*/
+/*
+    class class_one{
+        private var_one:string = "hello_1";
+    };
+    new class_one().var_one;
+    //Property 'var_one' is private and only accessible within class 'class_one'.ts(2341
+*/
+/*
+    class class_one{
+        private var_one:string="Hello_1";
+    };
+    class class_two extends class_one{
+
+    };
+    new class_two().var_one;
+    //Property 'var_one' is private and only accessible within class 'class_one'.ts(2341)
+*/
+/*
+    class class_one{
+        private constructor(){}
+    };
+    new class_one(); //Property 'var_one' is private and only accessible within class 'class_one'.ts(2341)
+*/
+var class_one = /** @class */ (function () {
+    function class_one() {
+        this.var_one = "hello_1";
+        this.var_two = this.var_one;
     }
-    return Parent;
+    class_one.prototype.fun_one = function () {
+        return "hello_2";
+    };
+    ;
+    class_one.prototype.fun_two = function () {
+        return this.fun_one();
+    };
+    ;
+    return class_one;
 }());
 ;
-var Child1 = /** @class */ (function (_super) {
-    __extends(Child1, _super);
-    function Child1() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.var_two = "Hello_2";
-        return _this;
-    }
-    return Child1;
-}(Parent));
-;
-var Child2 = /** @class */ (function (_super) {
-    __extends(Child2, _super);
-    function Child2() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.var_two = "Hello_3";
-        return _this;
-    }
-    return Child2;
-}(Parent));
-;
-var Child3 = /** @class */ (function (_super) {
-    __extends(Child3, _super);
-    function Child3() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.var_two = "Hello_4";
-        return _this;
-    }
-    return Child3;
-}(Parent));
-;
-var Child4 = /** @class */ (function (_super) {
-    __extends(Child4, _super);
-    function Child4() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.var_two = "Hello_5";
-        return _this;
-    }
-    return Child4;
-}(Parent));
-;
-var obj1 = new Child1();
-console.log(obj1.var_one, obj1.var_two);
-var obj2 = new Child2();
-console.log(obj2.var_one, obj2.var_two);
-var obj3 = new Child3();
-console.log(obj3.var_one, obj3.var_two);
-var obj4 = new Child4();
-console.log(obj4.var_one, obj4.var_two);
+var obj = new class_one();
+console.log(obj.var_two, obj.fun_two());

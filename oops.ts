@@ -175,6 +175,361 @@
 
 
 
+//polymorphism
+//behaves like many called as polymorphism
+//1) function overriding     (dynamic polymorphism)
+//2) function overloading    (static polymorphism)
+
+
+
+/*
+    //function overriding
+    //overriding the parent class functionality with child class functionality called as function overriding
+
+    class class_one{
+        dbFun():string{
+            return "oracle data soon...!";
+        };
+    };
+
+    class class_two extends class_one{
+        dbFun():string{
+            return "mongodb data soon...!";
+        }
+    };
+
+    let obj:class_two = new class_two();
+    console.log( obj.dbFun() );   //mongodb data soon...!
+
+    //Note : we can implement function overriding with the help of inheritance
+*/
+
+
+
+
+
+
+/*
+    //function overloading
+    //more than one function with same name, and same number of arguments but datatype is different
+    //we can implement function overloading without inheritance
+
+    class class_one{
+        display(arg1:string,arg2:string):any;
+        display(arg1:number,arg2:number):any;
+        display(arg1:string,arg2:number):any;
+
+        display(arg1:any,arg2:any):any{
+            console.log( arg1, arg2 );
+        }
+    };
+
+    let obj1:class_one = new class_one();
+    obj1.display("Hello_1","Hello_2");
+    obj1.display(100,200);
+    obj1.display("Hello_1",200);
+*/
+
+
+/*
+    //modifiers
+    1) public
+    2) private
+    3) protected
+
+    
+*/
+
+/*
+        public
+        ======
+        1) public members we can access "anywhere" in application.
+
+        2) public members by default available to "child" classes.
+
+        3) we can access public members, by using class "objects".
+
+        4) public modifier applicable to "variables", "functions", and "constructor" 
+
+        5) public modifier won't applicable to "classes"
+
+*/
+
+
+/*
+    class class_one{
+        public var_one:string;
+        public constructor(){
+            this.var_one = "hello_1";
+        }
+        public fun_one():string{
+            return this.var_one;
+        };
+    };
+
+    class class_two extends class_one{};
+
+    let obj:class_two = new class_two();
+    console.log( obj.var_one, obj.fun_one() );
+*/
+
+
+
+/*
+    public class class_one{};
+    //'public' modifier cannot appear on a module or namespace element.
+*/
+
+
+
+
+
+/*
+    private modifier
+    ================
+
+        1) private members "won't" accessable to "child" classes.
+
+        2) private members, we can't access by using class "objects".
+
+        3) private modifier applicable to "variables", "functions" and "constructor".
+
+        4) private modifier not applicable to "classes".
+
+        5) we can create object to the private "constructor" classes.
+*/
+
+
+
+
+/*
+    private class class_one{};
+    //'private' modifier cannot appear on a module or namespace element.
+*/
+
+
+
+
+/*
+    class class_one{
+        private var_one:string = "hello_1";
+    };
+    new class_one().var_one;
+    //Property 'var_one' is private and only accessible within class 'class_one'.ts(2341
+*/
+
+
+
+
+/*
+    class class_one{
+        private var_one:string="Hello_1";
+    };
+    class class_two extends class_one{
+
+    };
+    new class_two().var_one;
+    //Property 'var_one' is private and only accessible within class 'class_one'.ts(2341)
+*/
+
+
+
+
+/*
+    class class_one{
+        private constructor(){}
+    };
+    new class_one(); //Property 'var_one' is private and only accessible within class 'class_one'.ts(2341)
+*/
+
+
+class class_one{
+   private var_one:string = "hello_1";
+
+   var_two:string = this.var_one;
+
+   private fun_one():string{
+        return "hello_2";
+   };
+
+   fun_two():string{
+        return this.fun_one();
+   };
+
+};
+
+let obj:class_one = new class_one();
+console.log( obj.var_two, obj.fun_two() );  //hello_1 hello_2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
